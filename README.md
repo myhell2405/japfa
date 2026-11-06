@@ -1,58 +1,98 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+﻿# 🐔 Sistem Informasi Manajemen Kemitraan Peternakan (SIM-Kemitraan)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi berbasis web untuk tata kelola kemitraan peternakan ayam broiler, mencakup pencatatan peternak mitra, kapasitas kandang, perjanjian kontrak kerja sama, logistik sarana produksi ternak (Sapronak: DOC, pakan, obat), standarisasi kelas bobot harga panen, hingga evaluasi mortalitas dengan mekanisme kontrol akses berbasis peran (RBAC).
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Fitur Utama & Modul Sistem
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 1. Autentikasi & Multi-Role Access Control (RBAC)
+- **Owner**: Akses monitoring performa kemitraan dan laporan strategis.
+- **Manajer**: Otoritas penuh pengelolaan master data, kontrak kemitraan, alokasi sapronak, dan manajemen akun pengguna.
+- **Operator**: Pencatatan aktivitas harian dan input operasional lapangan.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 2. Tata Kelola Kemitraan & Fasilitas
+- **Data Mitra**: Direktori lengkap peternak mitra, riwayat kemitraan, dan kontak.
+- **Data Kandang**: Pemetaan kapasitas populasi, tipe kandang, dan lokasi geografis.
+- **Manajemen Kontrak**: Pencatatan periode siklus kemitraan, target populasi, dan klausul kerja sama.
 
-## Learning Laravel
+### 3. Logistik Sarana Produksi Peternakan (Sapronak)
+- **DOC (Day-Old Chicken / Bibit)**: Pencatatan batch bibit ayam, asal distributor, dan tanggal kedatangan.
+- **Manajemen Pakan**: Inventaris jenis pakan (Pre-starter, Starter, Finisher), monitoring stok, dan konsumsi.
+- **Manajemen Obat & Vaksin**: Pengawasan jadwal vaksinasi, pemberian vitamin, dan penanganan kesehatan ternak.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 4. Standarisasi Panen & Skema Penilaian
+- **Kelas Bobot & Skema Harga**: Penetapan batas ambang bobot ayam dan matriks penyesuaian harga beli.
+- **Monitoring Mortalitas**: Klasifikasi kategori kematian ayam untuk identifikasi dini risiko penyakit dan evaluasi performa budidaya (FCR / IP).
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## 🛠️ Stack Teknologi
 
-## Agentic Development
+- **Backend**: PHP 8.2+, Laravel 11/12
+- **Database**: MySQL / MariaDB (ORM Eloquent, Migration, & Seeder)
+- **Frontend**: Blade Templating, Tailwind CSS, Vite
+- **Autentikasi**: Custom Role-Based Session Middleware
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
-```bash
-composer require laravel/boost --dev
+## 📁 Struktur Direktori Proyek
 
-php artisan boost:install
-```
+`	ext
+japfa/
+├── app/
+│   ├── Http/Controllers/       # Logika controller: Mitra, Kandang, Kontrak, Sapronak
+│   └── Models/                 # Eloquent Model: User, Mitra, Kandang, Kontrak, dsb.
+├── database/
+│   ├── migrations/             # Skema tabel database relasional
+│   └── seeders/                # Data awal pengguna & parameter default
+├── resources/
+│   └── views/                  # Tampilan antarmuka Blade per peran
+├── routes/
+│   └── web.php                 # Definisi rute aplikasi & middleware filter
+└── README.md                   # Dokumentasi sistem
+`
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+---
 
-## Contributing
+## 💻 Panduan Instalasi Lokal
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 1. Prasyarat
+- PHP >= 8.2
+- Composer
+- Node.js & npm
+- MySQL Server
 
-## Code of Conduct
+### 2. Langkah Pengaturan
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+`ash
+# Clone repositori
+git clone git@github.com:myhell2405/japfa.git
+cd japfa
 
-## Security Vulnerabilities
+# Pasang dependensi
+composer install
+npm install
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Konfigurasi environment
+cp .env.example .env
+php artisan key:generate
 
-## License
+# Konfigurasi database di file .env, lalu jalankan migrasi & seeder
+php artisan migrate --seed
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Kompilasi aset frontend
+npm run build
+
+# Jalankan server pengembangan
+php artisan serve
+`
+
+Akses sistem melalui peramban di: http://localhost:8000
+
+---
+
+## 👤 Pengembang
+
+**Helmy Akrim, S.Kom**  
+*Sarjana Sistem Informasi \| Systems Analyst & Full-Stack Developer*
